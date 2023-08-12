@@ -20,6 +20,16 @@ defmodule HouseflippingWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/api", HouseflippingWeb do
+    pipe_through :api
+
+    get "/users", UserController, :index
+    get "/users/:id", UserController, :show
+    post "/users", UserController, :create
+    put "/users/:id", UserController, :update
+    delete "/users/:id", UserController, :delete
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", HouseflippingWeb do
   #   pipe_through :api
